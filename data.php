@@ -16,8 +16,8 @@ if($conn->connect_error){
 }
 else{
     $stmt = $conn->prepare("insert into participants(fname, mname, lname, email, nationality, futureteam,
-    option, options, nameyearposition) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssss", $fname, $mname, $lname, $email, $nationality, $futureteam, $option, $options, $nameyearposition);
+    academy, achievements, a_details) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssss", $fname, $mname, $lname, $email, $nationality, $futureteam, $academy, $achievements, $a_details);
     $stmt->execute();
     echo "Registrated Successfully...";
     $stmt->close();
