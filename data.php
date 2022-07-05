@@ -1,27 +1,30 @@
 <?php
-$fname = $_POST['fname'];
-$mname = $_POST['mname'];
-$lname = $_POST['lname'];
-$email = $_POST['email'];
-$nationality = $_POST['nationality'];
-$futureteam = $_POST['futureteam'];
-$academy = $_POST['option'];
-$achievements = $_POST['options'];
-$a_details = $_POST['nameyearposition'];
+$fname = $_REQUEST['fname'];
+$mname = $_REQUEST['mname'];
+$lname = $_REQUEST['lname'];
+$email = $_REQUEST['email'];
+$nationality = $_REQUEST['nationality'];
+$futureteam = $_REQUEST['futureteam'];
+$option = $_REQUEST['option'];
+$options = $_REQUEST['options'];
+$nameyearposition = $_REQUEST['nameyearposition'];
 
 
-$conn = new mysqli('localhost','root','','test');
-if($conn->connect_error){
-    die('Connection Failed: '.$conn->connect_error);
+$conn = mysqli_connect("localhost","root",'',"registrations", 3306);
+if($conn === false){
+    die("Error: Could not connect. " .mysqli_connect_error());
+}
+
+$sql = "INSERT INTO participants VALUES('$fname', '$mname','$lname','$email',
+'$nationality','$futureteam','$option','$options','$nameyearposition')";
+
+if(mysqli_query($conn, $sql)){
+    echo "<h3> Data Stored in a Database Successfully </h3>";
 }
 else{
-    $stmt = $conn->prepare("insert into participants(fname, mname, lname, email, nationality, futureteam,
-    academy, achievements, a_details) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssss", $fname, $mname, $lname, $email, $nationality, $futureteam, $academy, $achievements, $a_details);
-    $stmt->execute();
-    echo "Registrated Successfully...";
-    $stmt->close();
-    $conn->close();
+    echo "Error: Hush! Sorry $sql. ".mysqli_error($conn);
 }
+
+mysqli_close($conn);        
 
 ?>

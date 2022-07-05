@@ -13,10 +13,10 @@
                     <a class="logo">FORMULA ONE</a>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="F1.html">About</a></li>
-                        <li><a href="DS.html">Driver Standings</a></li>
-                        <li><a href="CS.html">Constructor Standings</a></li>
-                        <li><a href="F1DriverForm.html">F1 Driver's Form</a></li>
+                        <li><a href="F1.php">About</a></li>
+                        <li><a href="DS.php">Driver Standings</a></li>
+                        <li><a href="CS.php">Constructor Standings</a></li>
+                        <li><a href="F1DriverForm.php">F1 Driver's Form</a></li>
                     </ul>
                 </header>
                 <div class="content">
